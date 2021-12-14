@@ -24,5 +24,6 @@
     cardsUrl:      util.format("http://user%s/cards", domain),
     loginUrl:      util.format("http://user%s/login", domain),
     registerUrl:   util.format("http://user%s/register", domain),
+    adminUrl:      util.format("http://admin%s", domain),
   };
 }());
