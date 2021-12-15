@@ -39,7 +39,7 @@ function adminLogin() {
         async: false,
         data: postvals,
         success: function (data, textStatus, jqXHR) {
-            $("#login-message").html('<div class="alert alert-success">Login successful.</div>');
+            $("#admin-login-message").html('<div class="alert alert-success">Login successful.</div>');
             console.log('posted: ' + textStatus);
             console.log("logged_in cookie: " + $.cookie('logged_in'));
             setTimeout(function(){
@@ -47,7 +47,7 @@ function adminLogin() {
             }, 1500);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            $("#login-message").html('<div class="alert alert-danger">Invalid login credentials.</div>');
+            $("#admin-login-message").html('<div class="alert alert-danger">Invalid login credentials.</div>');
             console.log('error: ' + JSON.stringify(jqXHR));
             console.log('error: ' + textStatus);
             console.log('error: ' + errorThrown);
