@@ -27,7 +27,7 @@ pipeline {
     stage('git scm update') {
       steps {
         container('docker') {
-          git url: 'https://github.com/micro-amazon/front-end.git', branch: 'main'
+          git url: 'https://github.com/micro-amazon/front-end.git', branch: 'master'
         }
       }
     }
