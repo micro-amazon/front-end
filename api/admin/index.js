@@ -25,7 +25,6 @@
                 res.end();
                 return;
             } else {
-                console.log("Error with log in: " + err);
                 res.status(401);
                 res.end();
                 return;
