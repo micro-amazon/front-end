@@ -27,8 +27,8 @@ function login() {
 }
 
 function adminLogin() {
-    var username = $('#username-modal').val();
-    var password = $('#password-modal').val();
+    var username = $('#admin-username-modal').val();
+    var password = $('#admin-password-modal').val();
     var postvals = JSON.stringify({
 		"username": username,
 		"password": password,
