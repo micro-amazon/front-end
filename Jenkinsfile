@@ -53,6 +53,7 @@ pipeline {
 
             kubectl apply -f https://raw.githubusercontent.com/micro-amazon/micro-amazon/master/deploy/kubernetes/manifests/09-front-end-dep.yaml
             kubectl apply -f https://raw.githubusercontent.com/micro-amazon/micro-amazon/master/deploy/kubernetes/manifests/10-front-end-svc.yaml
+            kubectl rollout restart deployment front-end -n sock-shop
           '''
         }
       }
