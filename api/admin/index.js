@@ -5,7 +5,7 @@
 
     app.post("/admin/login", function (req, res, next) {
         var options = {
-            uri: `${endpoints.adminUrl}/login`,
+            uri: `${endpoints.adminUrl}/admin/login`,
             method: 'POST',
             json: true,
             body: req.body
@@ -31,7 +31,6 @@
                 return;
             }
         });
-        return;
     });
 
     module.exports = app;
