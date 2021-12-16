@@ -53,6 +53,7 @@ function adminLogin() {
             console.log('error: ' + errorThrown);
         },
         beforeSend: function (xhr) {
+            xhr.setRequestHeader("Content-type","application/json");
             xhr.setRequestHeader("Authorization", "Basic " + btoa(username + ":" + password));
         }
     });

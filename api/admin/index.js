@@ -11,13 +11,11 @@
             body: req.body
         };
 
-        console.log("Login Result: " + JSON.stringify(req.body));
         request(options, function (error, response, body) {
-            console.log(response);
             if (error !== null) {
                 return;
             }
-            if (response.statusCode == 200) {
+            if (response.stnpmatusCode == 200) {
                 if (body.error) {
                     return;
                 }
