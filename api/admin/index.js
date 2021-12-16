@@ -20,28 +20,28 @@
                             callback(error);
                             return;
                         }
-                        if (response.statusCode == 200 && body != null && body != "") {
+                        if (response.statusCode == 200) {
                             if (body.error) {
                                 callback(body.error);
                                 return;
                             }
                             console.log(body);
-                            var customerId = body.id;
-                            console.log(customerId);
-                            req.session.customerId = customerId;
-                            callback(null, customerId);
+                            var adminId = body.username;
+                            console.log(adminId);
+                            req.session.adminId = adminId;
+                            callback(null, adminId);
                             return;
                         }
                         console.log(response.statusCode);
                         callback(true);
                     });
                 },
-                function(custId, callback) {
+                function(adminId, callback) {
                     var sessionId = req.session.id;
-                    console.log("Merging carts for customer id: " + custId + " and session id: " + sessionId);
+                    console.log("Merging carts for customer id: " + adminId + " and session id: " + sessionId);
 
                     var options = {
-                        uri: endpoints.cartsUrl + "/" + custId + "/merge" + "?sessionId=" + sessionId,
+                        uri: endpoints.adminUrl,
                         method: 'GET'
                     };
                     request(options, function(error, response, body) {
@@ -50,22 +50,22 @@
                             return;
                         }
                         console.log('Carts merged.');
-                        if(callback) callback(null, custId);
+                        if(callback) callback(null, adminId);
                     });
                 }
             ],
-            function(err, custId) {
+            function(err, adminId) {
                 if (err) {
                     console.log("Error with log in: " + err);
                     res.status(500);
                     res.end();
                     return;
                 }
-                console.log("set cookie" + custId);
+                console.log("set cookie" + adminId);
                 res.status(200);
                 res.cookie(cookie_name, req.session.id, {
                     maxAge: 3600000
-                }).send({id: custId});
+                }).send({id: adminId});
                 console.log("Sent cookies.");
                 res.end();
                 return;
