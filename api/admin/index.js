@@ -3,7 +3,7 @@
 
     var async = require("async"), express = require("express"), request = require("request"), endpoints = require("../endpoints"), helpers = require("../../helpers"), app = express(), cookie_name = "logged_in"
 
-    app.post("/login", function(req, res, next) {
+    app.post("/admin/login", function(req, res, next) {
         var options = {
             uri: `${endpoints.adminUrl}/login`,
             method: 'POST',
