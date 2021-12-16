@@ -4,14 +4,12 @@
     var async = require("async"), express = require("express"), request = require("request"), endpoints = require("../endpoints"), helpers = require("../../helpers"), app = express(), cookie_name = "logged_in"
 
     app.post("/admin/login", function (req, res, next) {
-        var headers = {'content-type' : 'application/x-www-form-urlencoded'};
         var options = {
-            headers,
             uri: `${endpoints.adminUrl}/login`,
             method: 'POST',
-            json: true,
-            body: req.body
+            form: req.body
         };
+
         console.log(options);
 
         request(options, function (error, response, body) {
