@@ -10,27 +10,19 @@
             json: true,
             body: req.body
         };
+        console.log(options);
 
         request(options, function (error, response, body) {
             if (error !== null) {
+                console.log(error);
                 return;
             }
-            if (response.stnpmatusCode == 200) {
+            if (response.statusCode == 200) {
                 if (body.error) {
                     return;
                 }
-
-                var options = {
-                    uri: endpoints.adminUrl,
-                    method: 'GET'
-                };
-                request(options, function (error, response, body) {
-                    console.log(response);
-                    if (error) {
-                        if (callback) callback(error);
-                        return;
-                    }
-                });
+                res.status(200);
+                res.end();
                 return;
             } else {
                 console.log("Error with log in: " + err);
@@ -39,7 +31,7 @@
                 return;
             }
         });
-
+        return;
     });
 
     module.exports = app;
