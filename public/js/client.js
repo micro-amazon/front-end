@@ -43,7 +43,7 @@ function adminLogin() {
             console.log('posted: ' + textStatus);
             console.log("logged_in cookie: " + $.cookie('logged_in'));
             setTimeout(function(){
-                location.href("/admin");
+                location.href = "/admin";
             }, 1500);
         },
         error: function (jqXHR, textStatus, errorThrown) {
