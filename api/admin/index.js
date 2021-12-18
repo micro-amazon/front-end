@@ -34,5 +34,36 @@
         return;
     });
 
+    app.post("/admin/register", function (req, res, next) {
+        var options = {
+            uri: `${endpoints.adminUrl}/register`,
+            method: 'POST',
+            form: req.body
+        };
+
+        console.log(options);
+
+        request(options, function (error, response, body) {
+            if (error !== null) {
+                console.log(error);
+                return;
+            }
+            console.log(response)
+            if (response.statusCode == 200) {
+                if (body.error) {
+                    return;
+                }
+                res.status(200);
+                res.end();
+                return;
+            } else {
+                res.status(401);
+                res.end();
+                return;
+            }
+        });
+        return;
+    });
+
     module.exports = app;
 }());
